@@ -462,6 +462,50 @@
             max-height: 600px;
             overflow-y: auto;
         }
+
+        /* Highlighting and Notes style */
+        mark.passage-highlight {
+            background-color: #fef08a;
+            color: #000;
+            cursor: pointer;
+            border-radius: 2px;
+            padding: 0 2px;
+        }
+
+        mark.note-highlight {
+            background-color: #a7f3d0 !important;
+            border-bottom: 2px dashed #059669;
+        }
+
+        .note-tooltip {
+            position: absolute;
+            background-color: #1e293b;
+            color: #f8fafc;
+            border: 1px solid #334155;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            max-width: 250px;
+            display: none;
+            pointer-events: none;
+        }
+
+        .note-indicator {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #059669;
+            color: white;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+            border-radius: 50%;
+            margin-left: 2px;
+            cursor: pointer;
+            vertical-align: super;
+        }
     </style>
 </head>
 <body>
@@ -505,26 +549,14 @@
                 <h1>IELTS Academic Listening Test — Practice Exam</h1>
 <p><strong>Total Time:</strong> Approximately 30 minutes (+ 10 minutes transfer time)  
 <strong>Total Questions:</strong> 40  
-<strong>Difficulty Level:</strong> Slightly below real exam (confidence builder for Band 5→7)</p>
-<blockquote class="info-blockquote"><strong>Instructions to the Test-Taker:</strong>  
-> This test has four sections. Each section is heard ONCE only.  
-> You may write your answers on the question paper as you listen.  
-> At the end of the test, you will have 10 minutes to transfer your answers to an answer sheet.  
-> Use a pencil.</blockquote>
-<blockquote class="info-blockquote"><strong>Instructions to the Reader / Teacher:</strong>  
-> Read each transcript aloud at a moderate, clear pace. Pause where indicated.  
-> Stage directions in [square brackets] should NOT be read aloud.  
-> Words in <em>italics</em> indicate natural stress or emphasis.</blockquote>
-<p>---</p>
+<strong>Difficulty Level:</strong> Slightly below real exam (confidence builder for Band 5→7)
+<blockquote class="info-blockquote"><strong>Instructions to the Test-Taker:</strong><br>This test has four sections. Each section is heard ONCE only.<br>You may write your answers on the question paper as you listen.<br>At the end of the test, you will have 10 minutes to transfer your answers to an answer sheet.<br>Use a pencil.<br><br><strong>Instructions to the Reader / Teacher:</strong><br>Read each transcript aloud at a moderate, clear pace. Pause where indicated.<br>Stage directions in [square brackets] should NOT be read aloud.<br>Words in <em>italics</em> indicate natural stress or emphasis.</blockquote>
+---</p>
     <div class="listening-section-box" style="margin-bottom: 3rem;">
         <h2>Section 1</h2>
-        <div style="margin-bottom: 1.5rem;"><p>Questions 1–10</p>
-<blockquote class="info-blockquote"><strong>You will hear a phone conversation between a student and a rental agency about finding accommodation near a university.</strong>
->
-> First, you have 30 seconds to look at Questions 1–10.
->
-> <em>[30-second pause]</em></blockquote>
-<h3>Questions 1–6: Form Completion</h3>
+        <div style="margin-bottom: 1.5rem;"><p>Questions 1–10
+<blockquote class="info-blockquote"><strong>You will hear a phone conversation between a student and a rental agency about finding accommodation near a university.</strong><br><br>First, you have 30 seconds to look at Questions 1–10.<br><br><em>[30-second pause]</em></blockquote>
+<h3>Questions 1–6: Form Completion</h3></p>
 <p><em>Complete the form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.</em></p>
 <p><strong>GREENFIELD LETTINGS — New Client Enquiry Form</strong></p>
 <table>
@@ -535,11 +567,11 @@
 <tbody>
 <tr>
 <td>Client name:</td>
-<td>Sarah <strong>1.</strong> \_\_\_\_\_\_\_\_\_\_\_\_</td>
+<td>Sarah <strong>1.</strong>  <input type="text" id="lis-q1" class="q-input" style="width: 150px;" placeholder="Q1"></td>
 </tr>
 <tr>
 <td>Contact number:</td>
-<td><strong>2.</strong> \_\_\_\_\_\_\_\_\_\_\_\_</td>
+<td><strong>2.</strong>  <input type="text" id="lis-q2" class="q-input" style="width: 150px;" placeholder="Q2"></td>
 </tr>
 <tr>
 <td>University:</td>
@@ -547,35 +579,35 @@
 </tr>
 <tr>
 <td>Course:</td>
-<td><strong>3.</strong> \_\_\_\_\_\_\_\_\_\_\_\_ Studies</td>
+<td><strong>3.</strong>  <input type="text" id="lis-q3" class="q-input" style="width: 150px;" placeholder="Q3">  Studies</td>
 </tr>
 <tr>
 <td>Preferred area:</td>
-<td>Near the <strong>4.</strong> \_\_\_\_\_\_\_\_\_\_\_\_</td>
+<td>Near the <strong>4.</strong>  <input type="text" id="lis-q4" class="q-input" style="width: 150px;" placeholder="Q4"></td>
 </tr>
 <tr>
 <td>Maximum monthly budget:</td>
-<td>£ <strong>5.</strong> \_\_\_\_\_\_\_\_\_\_\_\_</td>
+<td>£ <strong>5.</strong>  <input type="text" id="lis-q5" class="q-input" style="width: 150px;" placeholder="Q5"></td>
 </tr>
 <tr>
 <td>Move-in date:</td>
-<td><strong>6.</strong> \_\_\_\_\_\_\_\_\_\_\_\_ September</td>
+<td><strong>6.</strong>  <input type="text" id="lis-q6" class="q-input" style="width: 150px;" placeholder="Q6">  September</td>
 </tr>
 </tbody></table><h3>Questions 7–10: Multiple Choice</h3>
 <p><em>Choose the correct letter, A, B, or C.</em></p>
-<p><strong>7.</strong> What is included in the rent for the Maple Road flat?
+<p><strong>7.</strong> <input type="text" id="lis-q7" class="q-input" style="width: 60px;" placeholder="A/B/C"> What is included in the rent for the Maple Road flat?
 <ul><li>A. electricity and gas</li>
 <li>B. water and internet</li>
 <li>C. all bills</li></ul></p>
-<p><strong>8.</strong> Why does Sarah say she cannot take the King Street flat?
+<p><strong>8.</strong> <input type="text" id="lis-q8" class="q-input" style="width: 60px;" placeholder="A/B/C"> Why does Sarah say she cannot take the King Street flat?
 <ul><li>A. It is too expensive.</li>
 <li>B. It is too far from the university.</li>
 <li>C. It does not allow pets.</li></ul></p>
-<p><strong>9.</strong> What does the agent say about the viewing for the Park Lane flat?
+<p><strong>9.</strong> <input type="text" id="lis-q9" class="q-input" style="width: 60px;" placeholder="A/B/C"> What does the agent say about the viewing for the Park Lane flat?
 <ul><li>A. It is available this afternoon.</li>
 <li>B. It can be arranged for Saturday morning.</li>
 <li>C. The flat has already been taken.</li></ul></p>
-<p><strong>10.</strong> What does Sarah decide to do at the end of the call?
+<p><strong>10.</strong> <input type="text" id="lis-q10" class="q-input" style="width: 60px;" placeholder="A/B/C"> What does Sarah decide to do at the end of the call?
 <ul><li>A. book two viewings</li>
 <li>B. look at other agencies first</li>
 <li>C. call back after checking with her flatmate</li></ul></p>
@@ -623,13 +655,9 @@
     
     <div class="listening-section-box" style="margin-bottom: 3rem;">
         <h2>Section 2</h2>
-        <div style="margin-bottom: 1.5rem;"><p>Questions 11–20</p>
-<blockquote class="info-blockquote"><strong>You will hear a tour guide giving information about a local museum and its upcoming exhibitions.</strong>
->
-> First, you have 30 seconds to look at Questions 11–15.
->
-> <em>[30-second pause]</em></blockquote>
-<h3>Questions 11–15: Map/Plan Labelling</h3>
+        <div style="margin-bottom: 1.5rem;"><p>Questions 11–20
+<blockquote class="info-blockquote"><strong>You will hear a tour guide giving information about a local museum and its upcoming exhibitions.</strong><br><br>First, you have 30 seconds to look at Questions 11–15.<br><br><em>[30-second pause]</em></blockquote>
+<h3>Questions 11–15: Map/Plan Labelling</h3></p>
 <p><em>Label the map below. Write the correct letter, A–H, next to Questions 11–15.</em></p>
 <p><strong>RIVERSIDE MUSEUM — Ground Floor Plan</strong></p>
 <pre><code class="language-">                     ┌─────────────────────────────────────────────────┐
@@ -668,35 +696,33 @@
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>11.</strong> \_\_\_\_</td>
+<td><strong>11.</strong>  <input type="text" id="lis-q11" class="q-input" style="width: 150px;" placeholder="Q11"></td>
 <td>Ticket Office</td>
 </tr>
 <tr>
-<td><strong>12.</strong> \_\_\_\_</td>
+<td><strong>12.</strong>  <input type="text" id="lis-q12" class="q-input" style="width: 150px;" placeholder="Q12"></td>
 <td>Café</td>
 </tr>
 <tr>
-<td><strong>13.</strong> \_\_\_\_</td>
+<td><strong>13.</strong>  <input type="text" id="lis-q13" class="q-input" style="width: 150px;" placeholder="Q13"></td>
 <td>Ancient History Gallery</td>
 </tr>
 <tr>
-<td><strong>14.</strong> \_\_\_\_</td>
+<td><strong>14.</strong>  <input type="text" id="lis-q14" class="q-input" style="width: 150px;" placeholder="Q14"></td>
 <td>Children's Activity Room</td>
 </tr>
 <tr>
-<td><strong>15.</strong> \_\_\_\_</td>
+<td><strong>15.</strong>  <input type="text" id="lis-q15" class="q-input" style="width: 150px;" placeholder="Q15"></td>
 <td>Temporary Exhibition Hall</td>
 </tr>
-</tbody></table><blockquote class="info-blockquote"><em>Now you have 30 seconds to look at Questions 16–20.</em>
->
-> <em>[30-second pause]</em></blockquote>
+</tbody></table><blockquote class="info-blockquote"><em>Now you have 30 seconds to look at Questions 16–20.</em><br><br><em>[30-second pause]</em></blockquote>
 <h3>Questions 16–20: Sentence Completion</h3>
 <p><em>Complete the sentences below. Write NO MORE THAN TWO WORDS for each answer.</em></p>
-<p><strong>16.</strong> The museum was originally built as a \_\_\_\_\_\_\_\_\_\_\_\_ in the 1880s.</p>
-<p><strong>17.</strong> The new photography exhibition will open on the first of \_\_\_\_\_\_\_\_\_\_\_\_.</p>
-<p><strong>18.</strong> Visitors to the wildlife exhibition can use \_\_\_\_\_\_\_\_\_\_\_\_ to hear animal sounds.</p>
-<p><strong>19.</strong> On Saturdays, the museum organises free \_\_\_\_\_\_\_\_\_\_\_\_ for children aged 5 to 12.</p>
-<p><strong>20.</strong> The museum car park is located behind the \_\_\_\_\_\_\_\_\_\_\_\_.</p>
+<p><strong>16.</strong> The museum was originally built as a  <input type="text" id="lis-q16" class="q-input" style="width: 150px;" placeholder="Q16">  in the 1880s.</p>
+<p><strong>17.</strong> The new photography exhibition will open on the first of  <input type="text" id="lis-q17" class="q-input" style="width: 150px;" placeholder="Q17"> .</p>
+<p><strong>18.</strong> Visitors to the wildlife exhibition can use  <input type="text" id="lis-q18" class="q-input" style="width: 150px;" placeholder="Q18">  to hear animal sounds.</p>
+<p><strong>19.</strong> On Saturdays, the museum organises free  <input type="text" id="lis-q19" class="q-input" style="width: 150px;" placeholder="Q19">  for children aged 5 to 12.</p>
+<p><strong>20.</strong> The museum car park is located behind the  <input type="text" id="lis-q20" class="q-input" style="width: 150px;" placeholder="Q20"> .</p>
 <p>---</p></div>
         
         <div class="transcript-container no-print">
@@ -727,38 +753,32 @@
     
     <div class="listening-section-box" style="margin-bottom: 3rem;">
         <h2>Section 3</h2>
-        <div style="margin-bottom: 1.5rem;"><p>Questions 21–30</p>
-<blockquote class="info-blockquote"><strong>You will hear a tutorial discussion between a professor and two students about a group research project on renewable energy in urban areas.</strong>
->
-> First, you have 30 seconds to look at Questions 21–25.
->
-> <em>[30-second pause]</em></blockquote>
-<h3>Questions 21–25: Multiple Choice</h3>
+        <div style="margin-bottom: 1.5rem;"><p>Questions 21–30
+<blockquote class="info-blockquote"><strong>You will hear a tutorial discussion between a professor and two students about a group research project on renewable energy in urban areas.</strong><br><br>First, you have 30 seconds to look at Questions 21–25.<br><br><em>[30-second pause]</em></blockquote>
+<h3>Questions 21–25: Multiple Choice</h3></p>
 <p><em>Choose the correct letter, A, B, or C.</em></p>
-<p><strong>21.</strong> What is the main focus of the students' research project?
+<p><strong>21.</strong> <input type="text" id="lis-q21" class="q-input" style="width: 60px;" placeholder="A/B/C"> What is the main focus of the students' research project?
 <ul><li>A. comparing renewable energy use in different countries</li>
 <li>B. investigating how cities can increase their use of renewable energy</li>
 <li>C. measuring the environmental impact of fossil fuels in urban areas</li></ul></p>
-<p><strong>22.</strong> What does Professor Clarke say about the students' literature review?
+<p><strong>22.</strong> <input type="text" id="lis-q22" class="q-input" style="width: 60px;" placeholder="A/B/C"> What does Professor Clarke say about the students' literature review?
 <ul><li>A. They have included too many sources.</li>
 <li>B. They need to focus on more recent publications.</li>
 <li>C. The structure is clear and well-organised.</li></ul></p>
-<p><strong>23.</strong> According to Maya, what was the most surprising finding from their survey?
+<p><strong>23.</strong> <input type="text" id="lis-q23" class="q-input" style="width: 60px;" placeholder="A/B/C"> According to Maya, what was the most surprising finding from their survey?
 <ul><li>A. Most residents did not know about government incentives.</li>
 <li>B. Residents preferred wind energy to solar energy.</li>
 <li>C. Very few people were willing to pay more for green energy.</li></ul></p>
-<p><strong>24.</strong> What problem does Jake mention about collecting data?
+<p><strong>24.</strong> <input type="text" id="lis-q24" class="q-input" style="width: 60px;" placeholder="A/B/C"> What problem does Jake mention about collecting data?
 <ul><li>A. Some of the online survey responses were incomplete.</li>
 <li>B. They did not receive enough responses overall.</li>
 <li>C. The questions were too difficult for participants to understand.</li></ul></p>
-<p><strong>25.</strong> What does Professor Clarke recommend for the next stage of the project?
+<p><strong>25.</strong> <input type="text" id="lis-q25" class="q-input" style="width: 60px;" placeholder="A/B/C"> What does Professor Clarke recommend for the next stage of the project?
 <ul><li>A. conducting interviews with city planners</li>
 <li>B. visiting renewable energy sites in person</li>
-<li>C. redesigning the survey with simpler questions</li></ul></p>
-<blockquote class="info-blockquote"><em>Now you have 30 seconds to look at Questions 26–30.</em>
->
-> <em>[30-second pause]</em></blockquote>
-<h3>Questions 26–30: Matching</h3>
+<li>C. redesigning the survey with simpler questions</li></ul>
+<blockquote class="info-blockquote"><em>Now you have 30 seconds to look at Questions 26–30.</em><br><br><em>[30-second pause]</em></blockquote>
+<h3>Questions 26–30: Matching</h3></p>
 <p><em>What advantage does each renewable energy source have for urban areas, according to the discussion?</em></p>
 <p><em>Choose FIVE answers from the box and write the correct letter, A–G, next to Questions 26–30.</em></p>
 <p><strong>Advantages</strong></p>
@@ -809,29 +829,29 @@
 <td>---</td>
 </tr>
 <tr>
-<td><strong>26.</strong></td>
+<td><strong>26.</strong> <input type="text" id="lis-q26" class="q-input" style="width: 60px;" placeholder="A-G"></td>
 <td>Solar panels</td>
-<td>\_\_\_\_</td>
+<td><input type="text" id="lis-q26" class="q-input" style="width: 150px;" placeholder="Q26"></td>
 </tr>
 <tr>
-<td><strong>27.</strong></td>
+<td><strong>27.</strong> <input type="text" id="lis-q27" class="q-input" style="width: 60px;" placeholder="A-G"></td>
 <td>Small wind turbines</td>
-<td>\_\_\_\_</td>
+<td><input type="text" id="lis-q27" class="q-input" style="width: 150px;" placeholder="Q27"></td>
 </tr>
 <tr>
-<td><strong>28.</strong></td>
+<td><strong>28.</strong> <input type="text" id="lis-q28" class="q-input" style="width: 60px;" placeholder="A-G"></td>
 <td>Ground-source heat pumps</td>
-<td>\_\_\_\_</td>
+<td><input type="text" id="lis-q28" class="q-input" style="width: 150px;" placeholder="Q28"></td>
 </tr>
 <tr>
-<td><strong>29.</strong></td>
+<td><strong>29.</strong> <input type="text" id="lis-q29" class="q-input" style="width: 60px;" placeholder="A-G"></td>
 <td>Biomass heating</td>
-<td>\_\_\_\_</td>
+<td><input type="text" id="lis-q29" class="q-input" style="width: 150px;" placeholder="Q29"></td>
 </tr>
 <tr>
-<td><strong>30.</strong></td>
+<td><strong>30.</strong> <input type="text" id="lis-q30" class="q-input" style="width: 60px;" placeholder="A-G"></td>
 <td>Micro-hydropower</td>
-<td>\_\_\_\_</td>
+<td><input type="text" id="lis-q30" class="q-input" style="width: 150px;" placeholder="Q30"></td>
 </tr>
 </tbody></table>---</div>
         
@@ -875,30 +895,24 @@
     
     <div class="listening-section-box" style="margin-bottom: 3rem;">
         <h2>Section 4</h2>
-        <div style="margin-bottom: 1.5rem;"><p>Questions 31–40</p>
-<blockquote class="info-blockquote"><strong>You will hear a university lecture on the psychology of decision-making and how cognitive biases affect everyday choices.</strong>
->
-> First, you have 30 seconds to look at Questions 31–35.
->
-> <em>[30-second pause]</em></blockquote>
-<h3>Questions 31–35: Summary Completion</h3>
+        <div style="margin-bottom: 1.5rem;"><p>Questions 31–40
+<blockquote class="info-blockquote"><strong>You will hear a university lecture on the psychology of decision-making and how cognitive biases affect everyday choices.</strong><br><br>First, you have 30 seconds to look at Questions 31–35.<br><br><em>[30-second pause]</em></blockquote>
+<h3>Questions 31–35: Summary Completion</h3></p>
 <p><em>Complete the summary below. Write NO MORE THAN TWO WORDS for each answer.</em></p>
 <p><strong>Summary: Cognitive Biases in Decision-Making</strong></p>
-<p>Research in psychology has shown that people do not always make decisions in a logical way. Instead, the brain uses mental shortcuts called <strong>31.</strong> \_\_\_\_\_\_\_\_\_\_\_\_ to make quick judgements. While these shortcuts are often useful, they can sometimes lead to errors known as cognitive biases.</p>
-<p>One common example is the <em>anchoring effect</em>. This occurs when people rely too heavily on the <strong>32.</strong> \_\_\_\_\_\_\_\_\_\_\_\_ piece of information they receive. For instance, in a negotiation, the opening offer often influences the final price, even if it is unreasonable.</p>
-<p>Another well-known bias is <em>confirmation bias</em>. People tend to search for evidence that <strong>33.</strong> \_\_\_\_\_\_\_\_\_\_\_\_ their existing beliefs, while ignoring information that contradicts them.</p>
-<p>The <em>availability heuristic</em> is a bias where people judge the likelihood of events based on how easily <strong>34.</strong> \_\_\_\_\_\_\_\_\_\_\_\_ come to mind. This explains why people often overestimate the risk of dramatic events like plane crashes.</p>
-<p>Finally, the lecturer discusses <em>loss aversion</em>, which refers to the tendency for people to feel the pain of losing something more strongly than the <strong>35.</strong> \_\_\_\_\_\_\_\_\_\_\_\_ of gaining something of equal value.</p>
-<blockquote class="info-blockquote"><em>Now you have 30 seconds to look at Questions 36–40.</em>
->
-> <em>[30-second pause]</em></blockquote>
-<h3>Questions 36–40: Short Answer Questions</h3>
+<p>Research in psychology has shown that people do not always make decisions in a logical way. Instead, the brain uses mental shortcuts called <strong>31.</strong>  <input type="text" id="lis-q31" class="q-input" style="width: 150px;" placeholder="Q31">  to make quick judgements. While these shortcuts are often useful, they can sometimes lead to errors known as cognitive biases.</p>
+<p>One common example is the <em>anchoring effect</em>. This occurs when people rely too heavily on the <strong>32.</strong>  <input type="text" id="lis-q32" class="q-input" style="width: 150px;" placeholder="Q32">  piece of information they receive. For instance, in a negotiation, the opening offer often influences the final price, even if it is unreasonable.</p>
+<p>Another well-known bias is <em>confirmation bias</em>. People tend to search for evidence that <strong>33.</strong>  <input type="text" id="lis-q33" class="q-input" style="width: 150px;" placeholder="Q33">  their existing beliefs, while ignoring information that contradicts them.</p>
+<p>The <em>availability heuristic</em> is a bias where people judge the likelihood of events based on how easily <strong>34.</strong>  <input type="text" id="lis-q34" class="q-input" style="width: 150px;" placeholder="Q34">  come to mind. This explains why people often overestimate the risk of dramatic events like plane crashes.</p>
+<p>Finally, the lecturer discusses <em>loss aversion</em>, which refers to the tendency for people to feel the pain of losing something more strongly than the <strong>35.</strong>  <input type="text" id="lis-q35" class="q-input" style="width: 150px;" placeholder="Q35">  of gaining something of equal value.
+<blockquote class="info-blockquote"><em>Now you have 30 seconds to look at Questions 36–40.</em><br><br><em>[30-second pause]</em></blockquote>
+<h3>Questions 36–40: Short Answer Questions</h3></p>
 <p><em>Answer the questions below. Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.</em></p>
-<p><strong>36.</strong> According to the lecturer, approximately how many decisions does an average adult make each day?</p>
-<p><strong>37.</strong> What does the lecturer say is the main reason people use mental shortcuts?</p>
-<p><strong>38.</strong> In the supermarket example, what was placed next to the expensive wine to influence customers?</p>
-<p><strong>39.</strong> What type of professional does the lecturer say is also affected by confirmation bias?</p>
-<p><strong>40.</strong> What does the lecturer suggest students do to reduce the impact of cognitive biases on their own decisions?</p>
+<p><strong>36.</strong> <input type="text" id="lis-q36" class="q-input" style="width: 180px;" placeholder="Q36"> According to the lecturer, approximately how many decisions does an average adult make each day?</p>
+<p><strong>37.</strong> <input type="text" id="lis-q37" class="q-input" style="width: 180px;" placeholder="Q37"> What does the lecturer say is the main reason people use mental shortcuts?</p>
+<p><strong>38.</strong> <input type="text" id="lis-q38" class="q-input" style="width: 180px;" placeholder="Q38"> In the supermarket example, what was placed next to the expensive wine to influence customers?</p>
+<p><strong>39.</strong> <input type="text" id="lis-q39" class="q-input" style="width: 180px;" placeholder="Q39"> What type of professional does the lecturer say is also affected by confirmation bias?</p>
+<p><strong>40.</strong> <input type="text" id="lis-q40" class="q-input" style="width: 180px;" placeholder="Q40"> What does the lecturer suggest students do to reduce the impact of cognitive biases on their own decisions?</p>
 <p>---</p></div>
         
         <div class="transcript-container no-print">
@@ -1009,11 +1023,11 @@
 <td><strong>NOT GIVEN</strong></td>
 <td><em>if there is no information on this</em></td>
 </tr>
-</tbody></table><strong>1.</strong> &emsp; Urban farming currently provides food to around 800 million people globally.
-<p><strong>2.</strong> &emsp; By 2050, it is predicted that more than 80 percent of the world's population will live in cities.</p>
-<p><strong>3.</strong> &emsp; The Michigan Urban Farming Initiative has received government funding for all of its projects.</p>
-<p><strong>4.</strong> &emsp; Singapore currently imports more than 90 percent of the food it consumes.</p>
-<p><strong>5.</strong> &emsp; Sky Greens' vertical farming systems require large quantities of water to operate.</p>
+</tbody></table><strong>1.</strong> <input type="text" id="read-q1" class="q-input" style="width: 100px;" placeholder="T/F/NG"> &emsp; Urban farming currently provides food to around 800 million people globally.
+<p><strong>2.</strong> <input type="text" id="read-q2" class="q-input" style="width: 100px;" placeholder="T/F/NG"> &emsp; By 2050, it is predicted that more than 80 percent of the world's population will live in cities.</p>
+<p><strong>3.</strong> <input type="text" id="read-q3" class="q-input" style="width: 100px;" placeholder="T/F/NG"> &emsp; The Michigan Urban Farming Initiative has received government funding for all of its projects.</p>
+<p><strong>4.</strong> <input type="text" id="read-q4" class="q-input" style="width: 100px;" placeholder="T/F/NG"> &emsp; Singapore currently imports more than 90 percent of the food it consumes.</p>
+<p><strong>5.</strong> <input type="text" id="read-q5" class="q-input" style="width: 100px;" placeholder="T/F/NG"> &emsp; Sky Greens' vertical farming systems require large quantities of water to operate.</p>
 <p>---</p>
 <h3>Questions 6–9</h3>
 <p><em>Reading Passage 1 has six paragraphs, A–F. Choose the correct heading for paragraphs B, C, D, and E from the list of headings below.</em></p>
@@ -1056,10 +1070,10 @@
 <td><strong>viii</strong></td>
 <td>Why cities urgently need new approaches to food supply</td>
 </tr>
-</tbody></table><strong>6.</strong> &emsp; Paragraph B &ensp; ______
-<p><strong>7.</strong> &emsp; Paragraph C &ensp; ______</p>
-<p><strong>8.</strong> &emsp; Paragraph D &ensp; ______</p>
-<p><strong>9.</strong> &emsp; Paragraph E &ensp; ______</p>
+</tbody></table><strong>6.</strong> &emsp; Paragraph B &ensp;  <input type="text" id="read-q6" class="q-input" style="width: 150px;" placeholder="Q6">
+<p><strong>7.</strong> &emsp; Paragraph C &ensp;  <input type="text" id="read-q7" class="q-input" style="width: 150px;" placeholder="Q7"></p>
+<p><strong>8.</strong> &emsp; Paragraph D &ensp;  <input type="text" id="read-q8" class="q-input" style="width: 150px;" placeholder="Q8"></p>
+<p><strong>9.</strong> &emsp; Paragraph E &ensp;  <input type="text" id="read-q9" class="q-input" style="width: 150px;" placeholder="Q9"></p>
 <p>---</p>
 <h3>Questions 10–13</h3>
 <p><em>Complete the summary below. Choose ONE WORD ONLY from the list for each answer.</em></p>
@@ -1087,7 +1101,7 @@
 <td>nutrient</td>
 <td>expensive</td>
 </tr>
-</tbody></table>Urban farming has grown significantly as cities look for ways to provide <strong>( 10 )</strong> ______ food for their residents. In Singapore, the government has promoted <strong>( 11 )</strong> ______ farming, in which crops are grown in <strong>( 12 )</strong> ______ layers inside controlled environments. However, urban farming is not without difficulties. In many cities, the soil is <strong>( 13 )</strong> ______ with harmful substances, which makes it unsuitable for growing food.
+</tbody></table>Urban farming has grown significantly as cities look for ways to provide <strong>10.</strong> <input type="text" id="read-q10" class="q-input" style="width: 120px;" placeholder="Q10"> food for their residents. In Singapore, the government has promoted <strong>11.</strong> <input type="text" id="read-q11" class="q-input" style="width: 120px;" placeholder="Q11"> farming, in which crops are grown in <strong>12.</strong> <input type="text" id="read-q12" class="q-input" style="width: 120px;" placeholder="Q12"> layers inside controlled environments. However, urban farming is not without difficulties. In many cities, the soil is <strong>13.</strong> <input type="text" id="read-q13" class="q-input" style="width: 120px;" placeholder="Q13"> with harmful substances, which makes it unsuitable for growing food.
 <p>---
 ---</p>
                     </div>
@@ -1096,30 +1110,30 @@
 <p><em>Reading Passage 2 has six paragraphs, A–F. Which paragraph contains the following information?</em></p>
 <p><em>Write the correct letter, A–F, next to Questions 14–18.</em></p>
 <p><em>NB: You may use any letter more than once.</em></p>
-<p><strong>14.</strong> &emsp; A description of how a specific brain structure processes learned information during sleep ______</p>
-<p><strong>15.</strong> &emsp; Evidence that short sleep periods during the day can reduce mistakes ______</p>
-<p><strong>16.</strong> &emsp; An explanation of why young people tend to fall asleep later than older adults ______</p>
-<p><strong>17.</strong> &emsp; Statistics showing how widespread poor sleep quality is among university students ______</p>
-<p><strong>18.</strong> &emsp; A suggestion that universities should change the times at which classes are held ______</p>
+<p><strong>14.</strong> <input type="text" id="read-q14" class="q-input" style="width: 60px;" placeholder="A-F"> &emsp; A description of how a specific brain structure processes learned information during sleep ______</p>
+<p><strong>15.</strong> <input type="text" id="read-q15" class="q-input" style="width: 60px;" placeholder="A-F"> &emsp; Evidence that short sleep periods during the day can reduce mistakes ______</p>
+<p><strong>16.</strong> <input type="text" id="read-q16" class="q-input" style="width: 60px;" placeholder="A-F"> &emsp; An explanation of why young people tend to fall asleep later than older adults ______</p>
+<p><strong>17.</strong> <input type="text" id="read-q17" class="q-input" style="width: 60px;" placeholder="A-F"> &emsp; Statistics showing how widespread poor sleep quality is among university students ______</p>
+<p><strong>18.</strong> <input type="text" id="read-q18" class="q-input" style="width: 60px;" placeholder="A-F"> &emsp; A suggestion that universities should change the times at which classes are held ______</p>
 <p>---</p>
 <h3>Questions 19–22</h3>
 <p><em>Choose the correct letter, A, B, C, or D.</em></p>
-<p><strong>19.</strong> &emsp; According to Dr. Matthew Walker's research, students who slept fewer than six hours before an exam</p>
+<p><strong>19.</strong> <input type="text" id="read-q19" class="q-input" style="width: 60px;" placeholder="A-D"> &emsp; According to Dr. Matthew Walker's research, students who slept fewer than six hours before an exam</p>
 <p>&emsp; A &emsp; were unable to complete the exam within the time limit.
 &emsp; B &emsp; performed approximately 10 percent worse than well-rested students.
 &emsp; C &emsp; showed no significant difference in performance compared to other students.
 &emsp; D &emsp; had difficulty understanding the exam questions.</p>
-<p><strong>20.</strong> &emsp; What is stated about REM sleep in the passage?</p>
+<p><strong>20.</strong> <input type="text" id="read-q20" class="q-input" style="width: 60px;" placeholder="A-D"> &emsp; What is stated about REM sleep in the passage?</p>
 <p>&emsp; A &emsp; It occurs mainly during the first few hours of sleep.
 &emsp; B &emsp; It is less important than slow-wave sleep for students.
 &emsp; C &emsp; It is particularly beneficial for creative thinking and connecting ideas.
 &emsp; D &emsp; It has no measurable effect on academic performance.</p>
-<p><strong>21.</strong> &emsp; According to Dr. Sara Mednick's research, a 60- to 90-minute nap can</p>
+<p><strong>21.</strong> <input type="text" id="read-q21" class="q-input" style="width: 60px;" placeholder="A-D"> &emsp; According to Dr. Sara Mednick's research, a 60- to 90-minute nap can</p>
 <p>&emsp; A &emsp; fully replace a night of lost sleep.
 &emsp; B &emsp; improve learning task performance by up to 20 percent.
 &emsp; C &emsp; cause difficulty sleeping the following night in all cases.
 &emsp; D &emsp; only benefit students who are already well rested.</p>
-<p><strong>22.</strong> &emsp; Dr. Mary Carskadon's recommendation regarding university scheduling is to</p>
+<p><strong>22.</strong> <input type="text" id="read-q22" class="q-input" style="width: 60px;" placeholder="A-D"> &emsp; Dr. Mary Carskadon's recommendation regarding university scheduling is to</p>
 <p>&emsp; A &emsp; eliminate all morning lectures entirely.
 &emsp; B &emsp; require students to take sleep medication.
 &emsp; C &emsp; provide students with more flexible timetabling options.
@@ -1146,21 +1160,21 @@
 <td><strong>NOT GIVEN</strong></td>
 <td><em>if it is impossible to say what the writer thinks about this</em></td>
 </tr>
-</tbody></table><strong>23.</strong> &emsp; Napping during the day is an effective long-term replacement for adequate nighttime sleep.
-<p><strong>24.</strong> &emsp; The problem of sleep deprivation among university students is limited to the United States.</p>
-<p><strong>25.</strong> &emsp; Consuming caffeine in the evening is unlikely to affect sleep quality.</p>
-<p><strong>26.</strong> &emsp; Students should regard sleep as being equally important to other aspects of their academic life.</p>
+</tbody></table><strong>23.</strong> <input type="text" id="read-q23" class="q-input" style="width: 100px;" placeholder="YES/NO/NG"> &emsp; Napping during the day is an effective long-term replacement for adequate nighttime sleep.
+<p><strong>24.</strong> <input type="text" id="read-q24" class="q-input" style="width: 100px;" placeholder="YES/NO/NG"> &emsp; The problem of sleep deprivation among university students is limited to the United States.</p>
+<p><strong>25.</strong> <input type="text" id="read-q25" class="q-input" style="width: 100px;" placeholder="YES/NO/NG"> &emsp; Consuming caffeine in the evening is unlikely to affect sleep quality.</p>
+<p><strong>26.</strong> <input type="text" id="read-q26" class="q-input" style="width: 100px;" placeholder="YES/NO/NG"> &emsp; Students should regard sleep as being equally important to other aspects of their academic life.</p>
 <p>---
 ---</p>
                     </div>
                     <div id="passage3-qs" class="passage-questions" style="display:none;">
                         <h3>Questions 27–31</h3>
 <p><em>Complete each sentence with the correct ending, using NO MORE THAN THREE WORDS from the passage for each answer.</em></p>
-<p><strong>27.</strong> &emsp; Easterlin's 1974 paper examined the link between national income and reported happiness across countries and over ____________.</p>
-<p><strong>28.</strong> &emsp; According to Easterlin, people assess their financial position relative to ____________ rather than in absolute terms.</p>
-<p><strong>29.</strong> &emsp; Kahneman described the process of continually striving for more without lasting satisfaction as a ____________.</p>
-<p><strong>30.</strong> &emsp; Stevenson and Wolfers found a roughly ____________ relationship between income and life satisfaction.</p>
-<p><strong>31.</strong> &emsp; Bhutan uses a concept called ____________ as an alternative measure of national progress to GDP.</p>
+<p><strong>27.</strong> Easterlin's 1974 paper examined the link between national income and reported happiness across countries and over  <input type="text" id="read-q27" class="q-input" style="width: 150px;" placeholder="Q27"> .</p>
+<p><strong>28.</strong> According to Easterlin, people assess their financial position relative to  <input type="text" id="read-q28" class="q-input" style="width: 150px;" placeholder="Q28">  rather than in absolute terms.</p>
+<p><strong>29.</strong> Kahneman described the process of continually striving for more without lasting satisfaction as a  <input type="text" id="read-q29" class="q-input" style="width: 150px;" placeholder="Q29"> .</p>
+<p><strong>30.</strong> Stevenson and Wolfers found a roughly  <input type="text" id="read-q30" class="q-input" style="width: 150px;" placeholder="Q30">  relationship between income and life satisfaction.</p>
+<p><strong>31.</strong> Bhutan uses a concept called  <input type="text" id="read-q31" class="q-input" style="width: 150px;" placeholder="Q31">  as an alternative measure of national progress to GDP.</p>
 <p>---</p>
 <h3>Questions 32–36</h3>
 <p><em>Look at the following statements (Questions 32–36) and the list of researchers below. Match each statement with the correct researcher, A–E.</em></p>
@@ -1192,11 +1206,11 @@
 <td><strong>E</strong></td>
 <td>Matthew Killingsworth</td>
 </tr>
-</tbody></table><strong>32.</strong> &emsp; Demonstrated that people prefer a lower income if it is higher than that of the people around them. ______
-<p><strong>33.</strong> &emsp; Argued that rises in national income over time do not lead to proportional increases in happiness. ______</p>
-<p><strong>34.</strong> &emsp; Identified a specific income level beyond which daily emotional experience did not improve. ______</p>
-<p><strong>35.</strong> &emsp; Collected real-time well-being data using mobile phone technology. ______</p>
-<p><strong>36.</strong> &emsp; Used data from 155 countries to challenge the idea that there is a point at which more money stops mattering. ______</p>
+</tbody></table><strong>32.</strong> <input type="text" id="read-q32" class="q-input" style="width: 60px;" placeholder="A-E"> Demonstrated that people prefer a lower income if it is higher than that of the people around them.  <input type="text" id="read-q32" class="q-input" style="width: 150px;" placeholder="Q32">
+<p><strong>33.</strong> <input type="text" id="read-q33" class="q-input" style="width: 60px;" placeholder="A-E"> Argued that rises in national income over time do not lead to proportional increases in happiness.  <input type="text" id="read-q33" class="q-input" style="width: 150px;" placeholder="Q33"></p>
+<p><strong>34.</strong> <input type="text" id="read-q34" class="q-input" style="width: 60px;" placeholder="A-E"> Identified a specific income level beyond which daily emotional experience did not improve.  <input type="text" id="read-q34" class="q-input" style="width: 150px;" placeholder="Q34"></p>
+<p><strong>35.</strong> <input type="text" id="read-q35" class="q-input" style="width: 60px;" placeholder="A-E"> Collected real-time well-being data using mobile phone technology.  <input type="text" id="read-q35" class="q-input" style="width: 150px;" placeholder="Q35"></p>
+<p><strong>36.</strong> <input type="text" id="read-q36" class="q-input" style="width: 60px;" placeholder="A-E"> Used data from 155 countries to challenge the idea that there is a point at which more money stops mattering.  <input type="text" id="read-q36" class="q-input" style="width: 150px;" placeholder="Q36"></p>
 <p>---</p>
 <h3>Questions 37–38</h3>
 <p><em>Choose TWO letters, A–E.</em></p>
@@ -1223,7 +1237,7 @@
 ---</p>
 <h1>ANSWER KEY</h1>
 <blockquote class="info-blockquote">⚠️ <strong>For the teacher/self-study only. Do not look at these answers before completing the test.</strong></blockquote>
-<p>---</p>
+---
 <h2>Passage 1: The Rise of Urban Farming</h2>
 <table>
 <thead><tr>
@@ -1480,7 +1494,7 @@
 <td>39–40</td>
 <td>8.5–9.0</td>
 </tr>
-</tbody></table>> <strong>Note:</strong> This is an approximate guide based on typical IELTS Academic Reading band descriptors. Actual scores may vary depending on exam difficulty and the official conversion table used by the test centre.
+</tbody></table><blockquote class="info-blockquote"><strong>Note:</strong> This is an approximate guide based on typical IELTS Academic Reading band descriptors. Actual scores may vary depending on exam difficulty and the official conversion table used by the test centre.</blockquote>
                     </div>
                     <button class="btn no-print" onclick="checkReadingAnswers()">Check Answers</button>
                 </div>
@@ -1496,9 +1510,9 @@
 <strong>Format:</strong> Timed Exam</p>
 <p>---</p>
 <p>---</p>
-<p><strong>Total Time: 60 minutes</strong></p>
-<div class="alert-box alert-important"<blockquote class="info-blockquote"><strong>IMPORTANT:</strong> You must complete <strong>both</strong> tasks. Task 2 contributes <strong>twice as much</strong> to your Writing score as Task 1. Manage your time carefully.</div></blockquote>
-<p>---</p>
+<p><strong>Total Time: 60 minutes</strong>
+<div class="alert-box alert-important"><strong>IMPORTANT:</strong> You must complete <strong>both</strong> tasks. Task 2 contributes <strong>twice as much</strong> to your Writing score as Task 1. Manage your time carefully.</div>
+---</p>
 <h2>Writing Task 1: Bar Chart</h2>
 <p><strong>You should spend about 20 minutes on this task.</strong></p>
 <p><em>The bar chart below shows the percentage of adults who participated in different types of physical activities in five countries (Australia, Japan, Brazil, Germany, and Egypt) in 2023.</em></p>
@@ -1559,14 +1573,8 @@
 </tr>
 </tbody></table>---
 <h3>Key Patterns in the Data (for your reference while writing — do NOT include this box in your answer)</h3>
-<blockquote class="info-blockquote"><strong>Trends to notice:</strong>
-> - Walking/Hiking is the most popular activity in Australia, Japan, and Germany.
-> - Brazil stands out for Team Sports (38%) — the highest single-country figure for that activity.
-> - Egypt has the lowest participation rates across all five activities.
-> - Japan and Germany both favour Walking/Hiking but differ in Gym participation (15% vs. 35%).
-> - Swimming and Running are moderately popular across most countries, but Egypt lags behind significantly.
-> - Australia is fairly balanced across all activities, with Walking leading.</blockquote>
-<p>---</p>
+<blockquote class="info-blockquote"><strong>Trends to notice:</strong><br>- Walking/Hiking is the most popular activity in Australia, Japan, and Germany.<br>- Brazil stands out for Team Sports (38%) — the highest single-country figure for that activity.<br>- Egypt has the lowest participation rates across all five activities.<br>- Japan and Germany both favour Walking/Hiking but differ in Gym participation (15% vs. 35%).<br>- Swimming and Running are moderately popular across most countries, but Egypt lags behind significantly.<br>- Australia is fairly balanced across all activities, with Walking leading.</blockquote>
+---
 <h3>✏️ Answer Space — Writing Task 1</h3>
 <p>Write your answer below. Remember:
 <ul><li><strong>Minimum 150 words</strong> (aim for 170–190 words)</li>
@@ -1580,11 +1588,9 @@
 <p>---</p>
 <h2>Writing Task 2: Essay</h2>
 <p><strong>You should spend about 40 minutes on this task.</strong></p>
-<p><em>Write about the following topic:</em></p>
-<blockquote class="info-blockquote"><strong>Some people believe that technology has made our lives more stressful, while others think it has made life easier and more convenient.</strong>
->
-> <strong>Discuss both views and give your own opinion.</strong></blockquote>
-<p><em>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</em></p>
+<p><em>Write about the following topic:</em>
+<blockquote class="info-blockquote"><strong>Some people believe that technology has made our lives more stressful, while others think it has made life easier and more convenient.</strong><br><br><strong>Discuss both views and give your own opinion.</strong></blockquote>
+<em>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</em></p>
 <p><em>Write at least 250 words.</em></p>
 <p>---</p>
 <h3>✏️ Answer Space — Writing Task 2</h3>
@@ -1605,9 +1611,9 @@
         <!-- SPEAKING SECTION -->
         <div id="speaking" class="tab-content">
             <h1>IELTS Academic Speaking Test</h1>
-            <p><strong>Total Time: 11–14 minutes</strong></p>
-<div class="alert-box alert-note"<blockquote class="info-blockquote"><strong>NOTE:</strong> The Speaking test is conducted as a face-to-face interview with one examiner. It is recorded. Speak naturally, clearly, and at a steady pace. You are assessed on <strong>Fluency & Coherence</strong>, <strong>Lexical Resource</strong>, <strong>Grammatical Range & Accuracy</strong>, and <strong>Pronunciation</strong>.</div></blockquote>
-<p>---</p>
+            <p><strong>Total Time: 11–14 minutes</strong>
+<div class="alert-box alert-note"><strong>NOTE:</strong> The Speaking test is conducted as a face-to-face interview with one examiner. It is recorded. Speak naturally, clearly, and at a steady pace. You are assessed on <strong>Fluency & Coherence</strong>, <strong>Lexical Resource</strong>, <strong>Grammatical Range & Accuracy</strong>, and <strong>Pronunciation</strong>.</div>
+---</p>
 <h2>Part 1: Introduction and Interview</h2>
 <p><strong>Time: 4–5 minutes</strong></p>
 <p><em>The examiner will introduce themselves and ask you to confirm your identity. Then the examiner will ask you questions on three familiar topic areas.</em></p>
@@ -1633,9 +1639,9 @@
 <p>---</p>
 <h2>Part 2: Long Turn (Cue Card)</h2>
 <p><strong>Time: 3–4 minutes</strong>  
-<em>(1 minute preparation + 1–2 minutes speaking)</em></p>
-<div class="alert-box alert-important"<blockquote class="info-blockquote"><strong>IMPORTANT:</strong> You will be given a <strong>pencil and paper</strong> to make notes during your 1-minute preparation time. You <strong>must</strong> speak for <strong>1 to 2 minutes</strong>. The examiner will tell you when your time is up.</div></blockquote>
-<p>---</p>
+<em>(1 minute preparation + 1–2 minutes speaking)</em>
+<div class="alert-box alert-important"><strong>IMPORTANT:</strong> You will be given a <strong>pencil and paper</strong> to make notes during your 1-minute preparation time. You <strong>must</strong> speak for <strong>1 to 2 minutes</strong>. The examiner will tell you when your time is up.</div>
+---</p>
 <h3>Cue Card</h3>
 <p><strong>Describe a skill you learned that you are proud of.</strong></p>
 <p>You should say:
@@ -1835,8 +1841,8 @@
 <td>1</td>
 <td>2.0</td>
 </tr>
-</tbody></table><div class="alert-box alert-tip"<blockquote class="info-blockquote"><strong>TIP:</strong> The overall band score is the average of all four skills (Listening, Reading, Writing, Speaking), rounded to the nearest whole or half band. For example, if your four scores are 6.5, 6.0, 5.5, and 6.0, your average is 6.0.</div></blockquote>
-<p>---</p>
+</tbody></table><div class="alert-box alert-tip"><strong>TIP:</strong> The overall band score is the average of all four skills (Listening, Reading, Writing, Speaking), rounded to the nearest whole or half band. For example, if your four scores are 6.5, 6.0, 5.5, and 6.0, your average is 6.0.</div>
+---
 <h2>Examiner Notes — All Four Skills</h2>
 <h3>Listening: Key Traps and Marking Notes</h3>
 <p><strong>Spelling Requirements:</strong>
@@ -1961,9 +1967,9 @@
 1. <strong>Fluency and Coherence:</strong> Speaks smoothly with logical development. Self-correction is natural, not disruptive.
 2. <strong>Lexical Resource:</strong> Range and precision of vocabulary. Ability to paraphrase when needed.
 3. <strong>Grammatical Range and Accuracy:</strong> Uses a variety of structures correctly. Errors do not impede communication.
-4. <strong>Pronunciation:</strong> Clear, intelligible speech. Uses features of connected speech, stress, and intonation naturally.</p>
-<div class="alert-box alert-warning"<blockquote class="info-blockquote"><strong>WARNING:</strong> Memorised answers are penalised. Examiners are trained to detect rehearsed responses and will redirect the conversation. Naturalness is valued over perfection.</div></blockquote>
-<p>---</p>
+4. <strong>Pronunciation:</strong> Clear, intelligible speech. Uses features of connected speech, stress, and intonation naturally.
+<div class="alert-box alert-warning"><strong>WARNING:</strong> Memorised answers are penalised. Examiners are trained to detect rehearsed responses and will redirect the conversation. Naturalness is valued over perfection.</div>
+---</p>
 <h2>Score Calculation Worksheet</h2>
 <p>Use this worksheet to record and calculate your estimated overall band score.</p>
 <pre><code class="language-">╔══════════════════════════════════════════════════════════════╗
@@ -2040,7 +2046,7 @@
 <h2>Improvement Notes by Band Level</h2>
 <h3>Band 5.0–5.5: Building Foundations</h3>
 <blockquote class="info-blockquote"><strong>Current Profile:</strong> You understand the gist of most texts and conversations but miss details. Your writing contains frequent errors that sometimes obscure meaning. Speaking is hesitant with limited vocabulary.</blockquote>
-<p><strong>What to Work On:</strong></p>
+<strong>What to Work On:</strong>
 <p>1. <strong>Vocabulary Expansion (Priority):</strong>
 <ul><li>Learn 10 new academic words per day using spaced repetition (Anki, Quizlet).</li>
 <li>Focus on the Academic Word List (AWL) — 570 word families that appear across all IELTS topics.</li>
@@ -2073,7 +2079,7 @@
 <p>---</p>
 <h3>Band 6.0–6.5: Bridging to Competent User</h3>
 <blockquote class="info-blockquote"><strong>Current Profile:</strong> You handle most situations adequately but lack precision and sophistication. Your writing is organised but may feel formulaic. You can discuss familiar topics fluently but struggle with abstract or complex ideas.</blockquote>
-<p><strong>What to Work On:</strong></p>
+<strong>What to Work On:</strong>
 <p>1. <strong>Vocabulary Sophistication:</strong>
 <ul><li>Move beyond the AWL to topic-specific vocabulary (environment, technology, education, health, globalisation).</li>
 <li>Learn synonyms and paraphrasing skills — the ability to express the same idea in different words is essential for Band 7.</li>
@@ -2108,7 +2114,7 @@
 <p>---</p>
 <h3>Band 7.0+: Maintenance and Advanced Strategies</h3>
 <blockquote class="info-blockquote"><strong>Current Profile:</strong> You are a competent user of English with good command of the language. You handle complex and detailed argumentation well, though you may make occasional errors. Your goal is to maintain consistency and push toward 7.5 or 8.0.</blockquote>
-<p><strong>Maintenance Strategies:</strong></p>
+<strong>Maintenance Strategies:</strong>
 <p>1. <strong>Consistency Is Everything:</strong>
 <ul><li>At Band 7+, the difference between a good day and a bad day can be a full band. The goal is not to learn new skills but to perform your existing skills reliably under pressure.</li>
 <li>Take a full practice test once every 2 weeks to maintain test stamina.</li>
@@ -2142,9 +2148,9 @@
 <li>Reading: 35–38 raw score</li>
 <li>Writing: Consistent 7.0+ across all four criteria in both tasks</li>
 <li>Speaking: Natural fluency with sophisticated vocabulary and near-error-free grammar</li></ul></p>
-<p>---</p>
-<div class="alert-box alert-note"<blockquote class="info-blockquote"><strong>NOTE:</strong> <strong>Final Reminder:</strong> IELTS scores are valid for two years from the test date. If you plan to use your score for university admission or visa applications, check the minimum score requirements for each individual skill — many institutions require a minimum of 6.0 or 6.5 in every skill, not just the overall band.</div></blockquote>
-<p>---</p>
+<p>---
+<div class="alert-box alert-note"><strong>NOTE:</strong> <strong>Final Reminder:</strong> IELTS scores are valid for two years from the test date. If you plan to use your score for university admission or visa applications, check the minimum score requirements for each individual skill — many institutions require a minimum of 6.0 or 6.5 in every skill, not just the overall band.</div>
+---</p>
 <p><em>End of Answer Keys & Score Conversion Guide</em>
 <em>Mock Exam Series — Academic Module</em></p>
         </div>
@@ -2675,26 +2681,55 @@
             document.getElementById('trackProgress').style.width = percentage + '%';
         }
 
-        // Highlight selection script
+        // Highlight & Notes selection script
         document.addEventListener('DOMContentLoaded', () => {
             const containers = document.querySelectorAll('.pane-passage, .transcript-body');
             
-            // Create floating highlighter button
+            // Create floating toolbar container
+            const toolbar = document.createElement('div');
+            toolbar.style.position = 'absolute';
+            toolbar.style.display = 'none';
+            toolbar.style.gap = '8px';
+            toolbar.style.zIndex = '9999';
+            toolbar.style.padding = '4px';
+            toolbar.style.backgroundColor = 'var(--bg-secondary)';
+            toolbar.style.border = '1px solid var(--border)';
+            toolbar.style.borderRadius = '24px';
+            toolbar.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.3)';
+            document.body.appendChild(toolbar);
+            
+            // Highlight button
             const hlButton = document.createElement('button');
             hlButton.innerHTML = '✒️ Highlight';
-            hlButton.style.position = 'absolute';
-            hlButton.style.display = 'none';
             hlButton.style.backgroundColor = '#8b5cf6';
             hlButton.style.color = '#fff';
             hlButton.style.border = 'none';
-            hlButton.style.padding = '6px 12px';
+            hlButton.style.padding = '6px 14px';
             hlButton.style.borderRadius = '20px';
             hlButton.style.cursor = 'pointer';
-            hlButton.style.zIndex = '9999';
             hlButton.style.fontSize = '12px';
             hlButton.style.fontWeight = '600';
-            hlButton.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-            document.body.appendChild(hlButton);
+            hlButton.style.outline = 'none';
+            toolbar.appendChild(hlButton);
+            
+            // Note button
+            const noteButton = document.createElement('button');
+            noteButton.innerHTML = '📝 Take Note';
+            noteButton.style.backgroundColor = '#059669';
+            noteButton.style.color = '#fff';
+            noteButton.style.border = 'none';
+            noteButton.style.padding = '6px 14px';
+            noteButton.style.borderRadius = '20px';
+            noteButton.style.cursor = 'pointer';
+            noteButton.style.fontSize = '12px';
+            noteButton.style.fontWeight = '600';
+            noteButton.style.outline = 'none';
+            toolbar.appendChild(noteButton);
+
+            // Create custom tooltip elements
+            const tooltip = document.createElement('div');
+            tooltip.className = 'note-tooltip';
+            document.body.appendChild(tooltip);
             
             let lastSelection = null;
             let targetContainer = null;
@@ -2708,21 +2743,22 @@
                         lastSelection = selection.getRangeAt(0).cloneRange();
                         targetContainer = container;
                         
-                        hlButton.style.left = e.pageX + 'px';
-                        hlButton.style.top = (e.pageY - 40) + 'px';
-                        hlButton.style.display = 'block';
+                        toolbar.style.left = e.pageX + 'px';
+                        toolbar.style.top = (e.pageY - 45) + 'px';
+                        toolbar.style.display = 'flex';
                     } else {
-                        hlButton.style.display = 'none';
+                        toolbar.style.display = 'none';
                     }
                 });
             });
             
             document.addEventListener('mousedown', (e) => {
-                if (e.target !== hlButton) {
-                    hlButton.style.display = 'none';
+                if (e.target !== hlButton && e.target !== noteButton && !toolbar.contains(e.target)) {
+                    toolbar.style.display = 'none';
                 }
             });
             
+            // Highlight action
             hlButton.addEventListener('click', () => {
                 if (!lastSelection || !targetContainer) return;
                 
@@ -2740,17 +2776,100 @@
                 }
                 
                 window.getSelection().removeAllRanges();
-                hlButton.style.display = 'none';
+                toolbar.style.display = 'none';
+            });
+
+            // Note action
+            noteButton.addEventListener('click', () => {
+                if (!lastSelection || !targetContainer) return;
+                
+                const noteText = prompt("Enter your note for the selected text:");
+                if (noteText === null) return;
+                
+                const mark = document.createElement('mark');
+                mark.className = 'passage-highlight note-highlight';
+                mark.setAttribute('data-note', noteText);
+                mark.title = noteText;
+                
+                try {
+                    lastSelection.surroundContents(mark);
+                } catch (err) {
+                    const contents = lastSelection.extractContents();
+                    mark.appendChild(contents);
+                    lastSelection.insertNode(mark);
+                }
+                
+                const indicator = document.createElement('span');
+                indicator.className = 'note-indicator';
+                indicator.innerHTML = '📝';
+                indicator.title = noteText;
+                mark.appendChild(indicator);
+                
+                window.getSelection().removeAllRanges();
+                toolbar.style.display = 'none';
             });
             
+            // Tooltip on Hover
+            document.addEventListener('mouseover', (e) => {
+                const mark = e.target.closest('.note-highlight');
+                if (mark) {
+                    const note = mark.getAttribute('data-note');
+                    tooltip.innerHTML = `<strong>Note:</strong> ${note}<br><span style="font-size:10px; opacity:0.7;">Click to edit/delete</span>`;
+                    tooltip.style.display = 'block';
+                    
+                    const rect = mark.getBoundingClientRect();
+                    tooltip.style.left = `${window.scrollX + rect.left}px`;
+                    tooltip.style.top = `${window.scrollY + rect.top - tooltip.offsetHeight - 10}px`;
+                }
+            });
+            
+            document.addEventListener('mouseout', (e) => {
+                if (e.target.closest('.note-highlight')) {
+                    tooltip.style.display = 'none';
+                }
+            });
+
+            // Click note or highlight to Edit/Remove
             document.addEventListener('click', (e) => {
-                if (e.target.classList.contains('passage-highlight')) {
-                    const mark = e.target;
-                    const parent = mark.parentNode;
-                    while (mark.firstChild) {
-                        parent.insertBefore(mark.firstChild, mark);
+                const mark = e.target.closest('.passage-highlight');
+                if (!mark) return;
+                
+                if (mark.classList.contains('note-highlight')) {
+                    const currentNote = mark.getAttribute('data-note');
+                    const choice = confirm(`Note Actions:
+
+Note: "${currentNote}"
+
+- Click OK to EDIT note
+- Click CANCEL to DELETE note & highlight`);
+                    if (choice) {
+                        const newNote = prompt("Edit your note:", currentNote);
+                        if (newNote !== null) {
+                            mark.setAttribute('data-note', newNote);
+                            const indicator = mark.querySelector('.note-indicator');
+                            if (indicator) indicator.title = newNote;
+                            mark.title = newNote;
+                        }
+                    } else {
+                        // Delete note highlight
+                        const parent = mark.parentNode;
+                        const indicator = mark.querySelector('.note-indicator');
+                        if (indicator) mark.removeChild(indicator);
+                        while (mark.firstChild) {
+                            parent.insertBefore(mark.firstChild, mark);
+                        }
+                        parent.removeChild(mark);
+                        tooltip.style.display = 'none';
                     }
-                    parent.removeChild(mark);
+                } else {
+                    // Standard highlight delete
+                    if (confirm("Delete this highlight?")) {
+                        const parent = mark.parentNode;
+                        while (mark.firstChild) {
+                            parent.insertBefore(mark.firstChild, mark);
+                        }
+                        parent.removeChild(mark);
+                    }
                 }
             });
         });
